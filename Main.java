@@ -26,7 +26,31 @@ public class Main {
         // iniciarTableroPrueba();
         System.out.println("---- SUDOKU ----");
         reglas();
-        int N = 9, K = 40;
+        String dificultad;
+        do {
+            System.out.println("Que dificultad desea ? ");
+            System.out.println(" - (D)ificil  /  (M)edio  /  (F)acil  -");
+            dificultad = sc.nextLine();
+            if(dificultad.equals("D") || dificultad.equals("M")  ||dificultad.equals("F")){
+                break;
+            }else{
+                System.out.println("Porfavor introduzca una dificultad valida (D, M o F)");
+            }
+        }while(true);
+        int N = 9, K;
+        switch (dificultad){
+            case "D":
+                K = 60;
+                break;
+            case "M":
+                K = 40;
+                break;
+            case "F":
+                K = 20;
+                break;
+            default:
+                K = 30;
+        }
         SudokuGenerator sudoku = new SudokuGenerator(N, K);
         iniciarTablero(sudoku.parse());
 
@@ -186,15 +210,13 @@ public class Main {
      */
     public static void reglas(){
         System.out.println("---- REGLAS DEL SUDOKU ----");
-        System.out.println("---- 1. ...");
-        System.out.println("---- 2. ...");
-        System.out.println("---- 3. ...");
-        System.out.println("---- 4. ...");
-        System.out.println("---- 5. ...");
-        System.out.println("---- 6. ...");
-        System.out.println("---- 7. Tiene 3 vidas, despues de cada intento fallido pierde 1 vida");
-        System.out.println("---- 8. Si se queda sin vidas, es Game Over");
-        System.out.println("---- 9. Si resuelve el Sudoku con al menos 1 vida, ha ganado");
+        System.out.println("---- 1. No se pueden repetir el mismo numero en un mismo cuadrante (3x3)");
+        System.out.println("---- 2. No se pueden repetir el mismo numero en una misma fila");
+        System.out.println("---- 3. No se pueden repetir el mismo numero en una misma columna");
+        System.out.println("---- 4. Tiene 3 vidas, despues de cada intento fallido pierde 1 vida");
+        System.out.println("---- 5. Si se queda sin vidas, es Game Over");
+        System.out.println("---- 6. Si resuelve el Sudoku con al menos 1 vida, ha ganado");
+        System.out.println("---- 7. Puede añadir notas/apuntes en cada celda sin perder vidas");
     }
 
     /**
