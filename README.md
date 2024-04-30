@@ -1,10 +1,12 @@
-# Project Title
+# Sudoku (CMD Version)
 
-Simple overview of use/purpose.
+This is a Sudoku game based on the cmd of Java
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+The rules are fully explained once the program is executed. They follow the basic rules of sudoku game.
+You can also add notes to don't fully commit on the answer.
+There is a system of 3 lives, you loose one life every time you guess wrong
 
 ## Getting Started
 <!---
