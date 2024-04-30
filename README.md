@@ -33,8 +33,8 @@ command to run if program contains helper info
 ```
 -->
 ## Authors
-Alejandro Crespo
-Susobhan Akhuli (https://www.geeksforgeeks.org/program-sudoku-generator/)
+* Alejandro Crespo
+* Susobhan Akhuli (https://www.geeksforgeeks.org/program-sudoku-generator/)
 
 <!---
 ## Version History
