@@ -29,8 +29,10 @@ public class Main {
                     introducirValor();
                     break;
                 case 2:
+                    addNota();
                     break;
                 case 3:
+                    verNotas();
                     break;
             }
 
@@ -80,6 +82,70 @@ public class Main {
 
     }
 
+    public static void addNota(){
+        int row = 0;
+        int col = 0;
+        do{
+            try{
+                System.out.println("----  Escoja fila  ----");
+                row = sc.nextInt();
+                System.out.println("---- Escoja columna ----");
+                col = sc.nextInt();
+                if(!((row < 10 && row > 0) && (col < 10 && col > 0)) || !tablero[row-1][col-1].isIndefinido()){
+                    System.out.println("Esta celda no existe o esta ya respuesta");
+                }
+            }catch (InputMismatchException e){
+                System.out.println("Introduzca un numero valido del 1 al 9");
+                sc.nextLine();
+            }
+        }while(!((row > 0 && row < 10) && (col > 0 && col < 10)) || !tablero[row-1][col-1].isIndefinido());
+        int contador = 1;
+        int nota = -1;
+        boolean salir = false;
+        do{
+            try {
+                System.out.println("Nota " + contador + ": ");
+                nota = sc.nextInt();
+                if(nota > 0 && nota < 10) {
+                    tablero[row - 1][col - 1].getNotas().add(nota);
+                    contador++;
+                }else{
+                    System.out.println("Nota no valida (del 1 al 9)");
+                }
+                System.out.println("Notas : " + tablero[row - 1][col - 1].getNotas());
+                System.out.println("Desea seguir añadiendo notas? (Y)es/(N)o");
+                String s = sc.next();
+                salir = s.equals("N");
+            }catch (InputMismatchException e){
+                System.out.println("Introduzca un numero valido del 1 al 9");
+                // sc.nextLine();
+                System.out.println("Desea seguir añadiendo notas? (Y)es/(N)o");
+                String s = sc.nextLine();
+                salir = s.equals("N");
+            }
+        }while(!salir);
+    }
+
+    public static void verNotas(){
+        int row = 0;
+        int col = 0;
+        do{
+            try{
+                System.out.println("----  Escoja fila  ----");
+                row = sc.nextInt();
+                System.out.println("---- Escoja columna ----");
+                col = sc.nextInt();
+                if(!((row < 10 && row > 0) && (col < 10 && col > 0)) || !tablero[row-1][col-1].isIndefinido()){
+                    System.out.println("Esta celda no existe o esta ya respuesta");
+                }
+                System.out.println("Notas de la celda [" + row + "," + col + "] : " + tablero[row - 1][col - 1].getNotas());
+            }catch (InputMismatchException e){
+                System.out.println("Introduzca un numero valido del 1 al 9");
+                sc.nextLine();
+            }
+        }while(!((row > 0 && row < 10) && (col > 0 && col < 10)) || !tablero[row-1][col-1].isIndefinido());
+    }
+
     public static boolean comprobarVictoria(){
         for (int i = 0; i < tablero.length; i++) {
             for (int j = 0; j < tablero.length; j++) {
@@ -109,8 +175,8 @@ public class Main {
             try {
                 System.out.println("---- Desea introducir un valor, ver las notas de una celda, o añadir notas a una celda? ----");
                 System.out.println("---- 1. Introducir valor ");
-                System.out.println("---- 2. Ver Notas ");
-                System.out.println("---- 3. Añadir Notas ");
+                System.out.println("---- 2. Añadir Notas ");
+                System.out.println("---- 3. Ver Notas ");
                 opc = sc.nextInt();
                 if(opc == 1 || opc == 2 || opc == 3){break;}
                 System.out.println("Escoja un modo de juego valido (1, 2 o 3)");
