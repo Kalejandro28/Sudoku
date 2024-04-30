@@ -16,6 +16,9 @@ public class Main {
         play();
     }
 
+    /**
+     * Metodo principal del juego
+     */
     public static void play(){
         // iniciarTableroPrueba();
         iniciarTablero("9F6T3F1T7F4T2F5T8F1F7F8T3T2F5T6T4F9F2T5F4F6F8F9F7F3F1T8T2F1F4T3F7T5F9F6T4F9F6T8F5F2F3T1F7F7T3F5F9T6F1T8F2F4T5T8F9F7F1F3F4F6F2T3F1F7T2T4F6T9T8F5F6F4T2F5T9F8T1F7T3F");
@@ -50,6 +53,10 @@ public class Main {
         }
     }
 
+    /**
+     * Metodo para intentar intruducir un valor a la celda
+     * Se introducira si es correcto. Sino quitara una vida
+     */
     public static void introducirValor(){
         int row = 0;
         int col = 0;
@@ -83,6 +90,9 @@ public class Main {
 
     }
 
+    /**
+     * Metodo para añadir notas/apuntes a cierta celda
+     */
     public static void addNota(){
         int row = 0;
         int col = 0;
@@ -127,6 +137,9 @@ public class Main {
         }while(!salir);
     }
 
+    /**
+     * Metodo para ver las notas/apuntes de cierta celda
+     */
     public static void verNotas(){
         int row = 0;
         int col = 0;
@@ -147,6 +160,10 @@ public class Main {
         }while(!((row > 0 && row < 10) && (col > 0 && col < 10)) || !tablero[row-1][col-1].isIndefinido());
     }
 
+    /**
+     * Metodo que comprueba si el tablero a sido completado
+     * @return true si se ha completado, sino false
+     */
     public static boolean comprobarVictoria(){
         for (int i = 0; i < tablero.length; i++) {
             for (int j = 0; j < tablero.length; j++) {
@@ -157,6 +174,10 @@ public class Main {
         }
         return true;
     }
+
+    /**
+     * Reglas del Juego
+     */
     public static void reglas(){
         System.out.println("---- REGLAS DEL SUDOKU ----");
         System.out.println("---- 1. ...");
@@ -170,6 +191,10 @@ public class Main {
         System.out.println("---- 9. Si resuelve el Sudoku con al menos 1 vida, ha ganado");
     }
 
+    /**
+     * Menu de opciones
+     * @return 1,2 o 3 segun la opcion escogida
+     */
     public static int opciones(){
         int opc;
         do {
@@ -189,14 +214,10 @@ public class Main {
         return opc;
     }
 
-    public static void iniciarTableroVacio(){
-        for (int i = 0; i < tablero.length; i++) {
-            for (int j = 0; j < tablero.length; j++) {
-                tablero[i][j] = new Cell(i+1);
-            }
-        }
-    }
-
+    /**
+     * Creacion del tablero
+     * @param tableroParse String a parsear con la informacion del tablero
+     */
     public static void iniciarTablero(String tableroParse){
         if(tableroParse.length() == (tablero.length * tablero.length * 2))
         {
@@ -211,98 +232,9 @@ public class Main {
         }
     }
 
-    public static void iniciarTableroPrueba(){
-        tablero[0][0] = new Cell(9);
-        tablero[0][1] = new Cell(6,6);
-        tablero[0][2] = new Cell(3);
-        tablero[0][3] = new Cell(1,1);
-        tablero[0][4] = new Cell(7);
-        tablero[0][5] = new Cell(4,4);
-        tablero[0][6] = new Cell(2);
-        tablero[0][7] = new Cell(5,5);
-        tablero[0][8] = new Cell(8);
-
-        tablero[1][0] = new Cell(1);
-        tablero[1][1] = new Cell(7);
-        tablero[1][2] = new Cell(8,8);
-        tablero[1][3] = new Cell(3,3);
-        tablero[1][4] = new Cell(2);
-        tablero[1][5] = new Cell(5,5);
-        tablero[1][6] = new Cell(6,6);
-        tablero[1][7] = new Cell(4);
-        tablero[1][8] = new Cell(9);
-
-        tablero[2][0] = new Cell(2,2);
-        tablero[2][1] = new Cell(5);
-        tablero[2][2] = new Cell(4);
-        tablero[2][3] = new Cell(6);
-        tablero[2][4] = new Cell(8);
-        tablero[2][5] = new Cell(9);
-        tablero[2][6] = new Cell(7);
-        tablero[2][7] = new Cell(3);
-        tablero[2][8] = new Cell(1,1);
-
-        tablero[3][0] = new Cell(8,8);
-        tablero[3][1] = new Cell(2);
-        tablero[3][2] = new Cell(1);
-        tablero[3][3] = new Cell(4,4);
-        tablero[3][4] = new Cell(3);
-        tablero[3][5] = new Cell(7,7);
-        tablero[3][6] = new Cell(5);
-        tablero[3][7] = new Cell(9);
-        tablero[3][8] = new Cell(6,6);
-
-        tablero[4][0] = new Cell(4);
-        tablero[4][1] = new Cell(9);
-        tablero[4][2] = new Cell(6,6);
-        tablero[4][3] = new Cell(8);
-        tablero[4][4] = new Cell(5);
-        tablero[4][5] = new Cell(2);
-        tablero[4][6] = new Cell(3,3);
-        tablero[4][7] = new Cell(1);
-        tablero[4][8] = new Cell(7);
-
-        tablero[5][0] = new Cell(7,7);
-        tablero[5][1] = new Cell(3);
-        tablero[5][2] = new Cell(5);
-        tablero[5][3] = new Cell(9,9);
-        tablero[5][4] = new Cell(6);
-        tablero[5][5] = new Cell(1,1);
-        tablero[5][6] = new Cell(8);
-        tablero[5][7] = new Cell(2);
-        tablero[5][8] = new Cell(4,4);
-
-        tablero[6][0] = new Cell(5,5);
-        tablero[6][1] = new Cell(8);
-        tablero[6][2] = new Cell(9);
-        tablero[6][3] = new Cell(7);
-        tablero[6][4] = new Cell(1);
-        tablero[6][5] = new Cell(3);
-        tablero[6][6] = new Cell(4);
-        tablero[6][7] = new Cell(6);
-        tablero[6][8] = new Cell(2,2);
-
-        tablero[7][0] = new Cell(3);
-        tablero[7][1] = new Cell(1);
-        tablero[7][2] = new Cell(7,7);
-        tablero[7][3] = new Cell(2,2);
-        tablero[7][4] = new Cell(4);
-        tablero[7][5] = new Cell(6,6);
-        tablero[7][6] = new Cell(9,9);
-        tablero[7][7] = new Cell(8);
-        tablero[7][8] = new Cell(5);
-
-        tablero[8][0] = new Cell(6);
-        tablero[8][1] = new Cell(4,4);
-        tablero[8][2] = new Cell(2);
-        tablero[8][3] = new Cell(5,5);
-        tablero[8][4] = new Cell(9);
-        tablero[8][5] = new Cell(8,8);
-        tablero[8][6] = new Cell(1);
-        tablero[8][7] = new Cell(7,7);
-        tablero[8][8] = new Cell(3);
-    }
-
+    /**
+     * Metodo para mostrar el estado del tablero en la terminal
+     */
     public static void mostrarTablero(){
         System.out.println("    1 2 3   4 5 6   7 8 9  ");
         System.out.println("  +-------|-------|-------+");
