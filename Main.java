@@ -3,6 +3,9 @@ package Sudoku;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * @author Alejandro Crespo Perez
+ */
 public class Main {
 
     private static Scanner sc = new Scanner(System.in);
@@ -21,9 +24,12 @@ public class Main {
      */
     public static void play(){
         // iniciarTableroPrueba();
-        iniciarTablero("9F6T3F1T7F4T2F5T8F1F7F8T3T2F5T6T4F9F2T5F4F6F8F9F7F3F1T8T2F1F4T3F7T5F9F6T4F9F6T8F5F2F3T1F7F7T3F5F9T6F1T8F2F4T5T8F9F7F1F3F4F6F2T3F1F7T2T4F6T9T8F5F6F4T2F5T9F8T1F7T3F");
         System.out.println("---- SUDOKU ----");
         reglas();
+        int N = 9, K = 40;
+        SudokuGenerator sudoku = new SudokuGenerator(N, K);
+        iniciarTablero(sudoku.parse());
+
         do {
             mostrarTablero();
             int opcion = opciones();
