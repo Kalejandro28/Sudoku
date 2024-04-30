@@ -78,6 +78,8 @@ public class Main {
             mostrarTablero();
             System.out.println("Enhorabuena !!!");
         }else{
+            completarTablero();
+            System.out.println("---- Solucion ----");
             mostrarTablero();
             System.out.println("Game Over, Try Again !!!");
         }
@@ -256,6 +258,14 @@ public class Main {
                 }else{
                     tablero[(i/2)/9][(i/2)%9] = new Cell(value);
                 }
+            }
+        }
+    }
+
+    public static void completarTablero(){
+        for (int i = 0; i < tablero.length; i++) {
+            for (int j = 0; j < tablero.length; j++) {
+                tablero[i][j].setValorEscogido(tablero[i][j].getValorCorrecto());
             }
         }
     }
